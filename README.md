@@ -1,11 +1,28 @@
 # Chat+
 
-A Tampermonkey userscript for Torn City desktop **Chat 3.0**.
+A userscript that lets you move, resize and rearrange the chats in [Torn City](https://www.torn.com)'s desktop **Chat 3.0**, and set each chat's message size.
 
-Unlock any chat widget with the padlock in its header, drag it by the header to
-anywhere on screen (the empty space on the far left, for example), and lock it
-there. Widgets that stay in Torn's bottom row slide over to close the gap.
-Right-click a padlock for the Chat+ menu, where the message size lives.
+- **Padlock on every chat.** Unlock a chat to drag it anywhere on screen by its header, the empty space on the far left for example, then lock it there.
+- **Return arrow.** A chat you have moved gets an arrow next to its padlock that sends it back to Torn's bottom row.
+- **Gap closing.** The chats left in Torn's row slide over to close the gap a moved chat leaves.
+- **Resize any chat.** Unlock it and drag its top edge to make it taller, or its top-left corner for width and height together. A moved chat also gets a bottom edge and a bottom-right corner. A wider chat in the row grows to the left, and its neighbours slide over to make room.
+- **Message size per chat.** Right-click a padlock for the Chat+ menu and set that chat's messages and typing box from 80% to 200%.
+- **Controls in the title bar.** Once a chat is at least 400 px wide, minus, the current percentage, plus and **Reset** sit in its title bar, so you don't need the menu.
+- **Reset per chat.** Gives a chat Torn's own size back.
+- **Remembered per chat.** Every chat keeps its own position, size and message size, and your other Torn tabs follow along live.
+- **Torn's reordering still works.** Locked chats in the row keep Torn's own drag-to-swap.
+
+There's no external server and nothing leaves `torn.com`: your layout is stored in your browser.
+
+---
+
+## Install
+
+1. Install a userscript manager, such as [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/).
+2. Open the install link and click **Install**:
+   https://raw.githubusercontent.com/Dickie1242/Torn-Chat-Plus/main/dist/chatplus.user.js
+   Your userscript manager checks this link for updates, so new versions arrive automatically.
+3. Reload `https://www.torn.com/`.
 
 ---
 
@@ -22,16 +39,6 @@ npm run watch      # rebuilds on every change under src/
 
 `dist/chatplus.user.js` is the finished userscript: the bundled code with the
 `==UserScript==` metadata block from `src/header.txt` on top.
-
----
-
-## Install
-
-1. Install a userscript manager, such as [Tampermonkey](https://www.tampermonkey.net/) or [Violentmonkey](https://violentmonkey.github.io/).
-2. Open the install link and click **Install**:
-   https://raw.githubusercontent.com/Dickie1242/Torn-Chat-Plus/main/dist/chatplus.user.js
-   Your userscript manager checks this link for updates, so new versions arrive automatically.
-3. Reload `https://www.torn.com/`.
 
 ---
 
