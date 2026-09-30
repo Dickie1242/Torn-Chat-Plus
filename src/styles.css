@@ -1,0 +1,202 @@
+/* Chat+ styles.
+   Every rule is !important because it has to beat Torn's inline styles. */
+
+.chatplus-floating {
+  position: fixed !important;
+  left: var(--chatplus-x, 0px) !important;
+  top: var(--chatplus-y, 0px) !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  translate: none !important;
+  margin: 0 !important;
+  z-index: 9000 !important;
+  transition: none !important;
+}
+
+.chatplus-floating.chatplus-dragging {
+  z-index: 9001 !important;
+}
+
+.chatplus-dragging {
+  user-select: none !important;
+}
+
+.chatplus-lock,
+.chatplus-reset {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+
+.chatplus-lock:hover,
+.chatplus-reset:hover,
+.chatplus-lock--unlocked {
+  opacity: 1;
+}
+
+.chatplus-draggable {
+  cursor: grab;
+  /* Without this a touch drag is stolen by the page's own scrolling. */
+  touch-action: none;
+}
+
+body.chatplus-grabbing,
+body.chatplus-grabbing * {
+  cursor: grabbing !important;
+}
+
+/* Message size. Torn's own font sizes come from hashed CSS-module classes, so
+   nothing inherits from the chat box - zoom scales the subtree regardless.
+   Without the custom property (100%) this falls back to zoom: 1, a no-op. */
+.chatplus-scaled {
+  zoom: var(--chatplus-scale, 1) !important;
+}
+
+/* Widget size. The size itself is inline on the chat box (features/resize/
+   sizing.js); these rules let it beat Torn's caps and contain the children,
+   the way Better Chat 3.0 does. */
+.chatplus-sized {
+  max-width: none !important;
+  max-height: none !important;
+  overflow: hidden !important;
+}
+
+/* On the box while handles are mounted: the handles position against it. */
+.chatplus-resizable {
+  position: relative !important;
+}
+
+.chatplus-handle {
+  position: absolute;
+  z-index: 10;
+  background: transparent;
+  /* Without this a touch drag is stolen by the page's own scrolling. */
+  touch-action: none;
+  user-select: none;
+}
+
+.chatplus-handle--n { top: 0; left: 0; right: 0; height: 8px; cursor: ns-resize; }
+.chatplus-handle--s { bottom: 0; left: 0; right: 0; height: 8px; cursor: ns-resize; }
+.chatplus-handle--se { right: 0; bottom: 0; width: 14px; height: 14px; cursor: nwse-resize; z-index: 11; }
+.chatplus-handle--nw { left: 0; top: 0; width: 14px; height: 14px; cursor: nwse-resize; z-index: 11; }
+
+.chatplus-handle:hover,
+.chatplus-handle--active {
+  background: rgba(124, 169, 0, 0.35);
+}
+
+body[data-chatplus-resizing="n"],
+body[data-chatplus-resizing="n"] *,
+body[data-chatplus-resizing="s"],
+body[data-chatplus-resizing="s"] * {
+  cursor: ns-resize !important;
+}
+
+body[data-chatplus-resizing="se"],
+body[data-chatplus-resizing="se"] *,
+body[data-chatplus-resizing="nw"],
+body[data-chatplus-resizing="nw"] * {
+  cursor: nwse-resize !important;
+}
+
+/* Header controls: the menu's size and reset actions inline in a chat's
+   header once the chat is wide enough (features/headerControls). */
+.chatplus-header-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0 6px 0 4px;
+  flex: 0 0 auto;
+  /* The steps, the value and the Reset button inherit colour and font: pinned
+     here so the strip reads the same on Torn's header as it does in the menu. */
+  color: #ddd;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.chatplus-header-controls--hidden {
+  display: none !important;
+}
+
+/* The Chat+ settings menu. It sits on document.body. Torn's fixed chat
+   container stacks above 9100, so the menu takes the largest z-index there is;
+   on a tie it still wins, because open() appends it after everything else. */
+.chatplus-menu {
+  position: fixed;
+  z-index: 2147483647;
+  min-width: 160px;
+  padding: 6px;
+  border: 1px solid #3a3a3a;
+  border-radius: 4px;
+  background: #1c1c1c;
+  color: #ddd;
+  font-size: 12px;
+  line-height: 1.4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+.chatplus-menu__row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.chatplus-menu__label {
+  flex: 1 1 auto;
+}
+
+.chatplus-menu__value {
+  min-width: 36px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.chatplus-menu__step {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid #3a3a3a;
+  border-radius: 3px;
+  background: #2a2a2a;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.chatplus-menu__step:hover {
+  background: #3a3a3a;
+}
+
+.chatplus-menu__button {
+  height: 20px;
+  flex: 0 0 auto;
+  padding: 0 8px;
+  border: 1px solid #3a3a3a;
+  border-radius: 3px;
+  background: #2a2a2a;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.chatplus-menu__button:hover:not(:disabled) {
+  background: #3a3a3a;
+}
+
+.chatplus-menu__button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}

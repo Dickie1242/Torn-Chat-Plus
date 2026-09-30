@@ -1,0 +1,17 @@
+{
+  "name": "chatplus",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Chat+ - movable Torn City Chat 3.0 widgets (Tampermonkey userscript)",
+  "license": "MIT",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "jsdom": "^29.1.1"
+  }
+}

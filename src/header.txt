@@ -1,0 +1,14 @@
+// ==UserScript==
+// @name         Chat+
+// @namespace    chatplus.torn
+// @version      1.8.1
+// @description  Unlock, drag, lock and resize Torn Chat 3.0 widgets, each with its own size and message size. Remaining widgets slide over to close the gap.
+// @license      MIT
+// @match        https://www.torn.com/*
+// @run-at       document-idle
+// @grant        none
+// @homepageURL  https://github.com/Dickie1242/Torn-Chat-Plus
+// @supportURL   https://github.com/Dickie1242/Torn-Chat-Plus/issues
+// @downloadURL  https://raw.githubusercontent.com/Dickie1242/Torn-Chat-Plus/main/dist/chatplus.user.js
+// @updateURL    https://raw.githubusercontent.com/Dickie1242/Torn-Chat-Plus/main/dist/chatplus.user.js
+// ==/UserScript==
